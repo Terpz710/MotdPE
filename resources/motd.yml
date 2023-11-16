@@ -18,4 +18,4 @@ motd_list:
 
 # Interval in seconds for MOTD rotation (used only if rotate_interval is true)
 
-update_interval: 10
+update_interval: 60
