@@ -1,0 +1,21 @@
+# Terpz710 waz here :p
+
+# Set to true to enable MOTD rotation at the specified interval, false to use only the static MOTD
+
+rotate_interval: true
+
+# If rotate_interval is false, this MOTD will always be displayed
+
+static_motd: "Welcome to our Server! Enjoy your stay."
+
+# List of MOTDs to rotate through if rotate_interval is true
+
+motd_list:
+  - "Welcome to the Awesome Server!"
+  - "Explore the wonders of our world!"
+  - "Join us for a fantastic gaming experience!"
+  - "Adventure awaits you on this server!"
+
+# Interval in seconds for MOTD rotation (used only if rotate_interval is true)
+
+update_interval: 10
