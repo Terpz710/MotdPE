@@ -46,7 +46,7 @@ class Main extends PluginBase implements Listener {
         $network = $this->getServer()->getNetwork();
         $network->setName($newMOTD);
         if (!empty($newSubMOTD)) {
-            $network->setSubName($newSubMOTD);
+            $network->sendPacket($newSubMOTD);
         }
     }
 }
