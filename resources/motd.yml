@@ -1,21 +1,32 @@
 # Terpz710 waz here :p
 
 # Set to true to enable MOTD rotation at the specified interval, false to use only the static MOTD
-
 rotate_interval: true
 
 # If rotate_interval is false, this MOTD will always be displayed
-
 static_motd: "Welcome to our Server! Enjoy your stay."
 
-# List of MOTDs to rotate through if rotate_interval is true
+# Set to true to enable Sub MOTD rotation at the specified interval, false to use only the static Sub MOTD
+sub_rotate_interval: true
 
+# If sub_rotate_interval is false, this Sub MOTD will always be displayed
+static_sub_motd: "A Minecraft Adventure"
+
+# List of MOTDs to rotate through if rotate_interval is true
 motd_list:
   - "Welcome to the Awesome Server!"
   - "Explore the wonders of our world!"
   - "Join us for a fantastic gaming experience!"
   - "Adventure awaits you on this server!"
 
-# Interval in seconds for MOTD rotation (used only if rotate_interval is true)
+# List of Sub MOTDs to rotate through if sub_rotate_interval is true
+sub_motd_list:
+  - "Survive and thrive!"
+  - "Build epic structures!"
+  - "Meet new friends in-game!"
 
-update_interval: 60
+# Interval in seconds for MOTD rotation (used only if rotate_interval is true)
+update_interval: 120
+
+# Interval in seconds for Sub MOTD rotation (used only if sub_rotate_interval is true)
+sub_update_interval: 120
