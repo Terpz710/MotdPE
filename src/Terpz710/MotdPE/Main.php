@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Terpz710\MotdPE;
 
 use pocketmine\event\Listener;
-use pocketmine\event\server\QueryRegenerateEvent;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use pocketmine\scheduler\Task;
@@ -26,9 +25,6 @@ class Main extends PluginBase implements Listener {
         } else {
             $this->updateMOTD($config->get("static_motd", ""));
         }
-    }
-
-    public function onQueryRegenerate(QueryRegenerateEvent $event) {
     }
 
     public function updateMOTD(string $newMOTD) {
