@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Terpz710\MotdPE;
 
 use pocketmine\event\Listener;
+use pocketmine\event\server\QueryRegenerateEvent;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use pocketmine\scheduler\Task;
@@ -12,8 +13,6 @@ use pocketmine\scheduler\Task;
 use Terpz710\MotdPE\MotdTask;
 
 class Main extends PluginBase implements Listener {
-
-    private $subRotateInterval;
 
     public function onEnable(): void {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -23,30 +22,16 @@ class Main extends PluginBase implements Listener {
 
         if ($config->get("rotate_interval", true)) {
             $interval = $config->get("update_interval", 300);
-            $this->subRotateInterval = $config->get("sub_rotate_interval", true);
-            $this->getScheduler()->scheduleRepeatingTask(
-                new MotdTask(
-                    $this,
-                    $config->get("motd_list", []),
-                    $config->get("sub_motd_list", []),
-                    $this->subRotateInterval,
-                    $config->get("sub_update_interval", 120)
-                ),
-                $interval
-            );
+            $this->getScheduler()->scheduleRepeatingTask(new MotdTask($this, $config->get("motd_list", [])), $interval);
         } else {
-            $this->updateMOTD(
-                $config->get("static_motd", ""),
-                $config->get("static_sub_motd", "")
-            );
+            $this->updateMOTD($config->get("static_motd", ""));
         }
     }
 
-    public function updateMOTD(string $newMOTD, string $newSubMOTD = "") {
-        $network = $this->getServer()->getNetwork();
-        $network->setName($newMOTD);
-        if (!empty($newSubMOTD)) {
-            $network->sendPacket($newSubMOTD);
-        }
+    public function onQueryRegenerate(QueryRegenerateEvent $event) {
+    }
+
+    public function updateMOTD(string $newMOTD) {
+        $this->getServer()->getNetwork()->setName($newMOTD);
     }
 }
